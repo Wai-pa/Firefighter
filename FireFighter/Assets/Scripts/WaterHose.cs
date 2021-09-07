@@ -8,7 +8,7 @@ public class WaterHose : MonoBehaviour
     private AudioSource audioS;
     private bool click;
     [SerializeField] private float speed = 5f;
-    // Start is called before the first frame update
+
     void Start()
     {
         audioS = GetComponent<AudioSource>();
@@ -20,7 +20,6 @@ public class WaterHose : MonoBehaviour
         click = context.performed;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (click && audioS.volume < 1f)

@@ -9,7 +9,7 @@ public class CursorLock : MonoBehaviour
     private bool lockState = true;
     bool cancelled = false;
     bool clicked = false;
-    // Start is called before the first frame update
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -25,7 +25,6 @@ public class CursorLock : MonoBehaviour
         clicked = context.performed;
     } 
 
-    // Update is called once per frame
     void Update()
     {
         if (cancelled && lockState)
@@ -43,6 +42,5 @@ public class CursorLock : MonoBehaviour
             lockState = true;
             clicked = false;
         }
-      
     }
 }

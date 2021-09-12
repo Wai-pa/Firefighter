@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class CursorLock : MonoBehaviour
 {
-
     private bool lockState = true;
     bool cancelled = false;
     bool clicked = false;

@@ -17,33 +17,17 @@ namespace UnityStandardAssets.Effects
         private AudioSource audioS;
         bool stop = false;
 
-        [SerializeField] private float audioVolume;
-        [SerializeField] private float lightIntensity;
-        [SerializeField] private float particleSystemSizeMultiplier;
-        [SerializeField] private float particleSystemSpeedMultiplier;
-
         private GameManager manager;
         
         private void Start()
         {
             manager = GameManager.instance;
-            manager.AddFlames();
 
             checkbox.SetActive(false);
             m_Systems = GetComponentsInChildren<ParticleSystem>();
             audioS = GetComponent<AudioSource>();
-
-            audioVolume = audioS.volume;
-            lightIntensity = light.intensity;
-
-            foreach(var system in m_Systems)
-            {
-                ParticleSystem.MainModule mainModule = system.main;
-                particleSystemSizeMultiplier = mainModule.startSizeMultiplier;
-                particleSystemSpeedMultiplier = mainModule.startSpeedMultiplier;
-            }
-
         }
+
         private void Update()
         {
             
@@ -71,8 +55,7 @@ namespace UnityStandardAssets.Effects
                     audioS.enabled = false;
                     stop = true;
                     manager.AddScore();
-                    manager.extinguishedFlames.Add(gameObject);
-                    manager.activeFlames.Remove(gameObject);
+                    manager.extinguishedFlames++;
                     break;
                 }
                 else
@@ -87,29 +70,9 @@ namespace UnityStandardAssets.Effects
             }
         }
 
-        public void RenableFlame()
+        public void DestroyIteself()
         {
-            
-            foreach (var system in m_Systems)
-            {
-                var emission = system.emission;
-                emission.enabled = true;
-
-                ParticleSystem.MainModule mainModule = system.main;
-
-                mainModule.startSizeMultiplier = particleSystemSizeMultiplier;
-                mainModule.startSpeedMultiplier = particleSystemSpeedMultiplier;
-            }
-            
-
-            checkbox.SetActive(false);
-            light.enabled = true;
-            audioS.enabled = true;
-            stop = false;
-
-            multiplier = 1;
-            audioS.volume = audioVolume;
-            light.intensity = lightIntensity;
+            Destroy(gameObject);
         }
     }
 }

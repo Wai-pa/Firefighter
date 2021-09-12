@@ -9,5 +9,5 @@ Feel free to send a message!
 
 Eduardo Nunes
 
-## Check my itch.io
-[itch.io](https://wai-pa.itch.io/)
+## Check it out in my itch.io
+[itch.io](https://wai-pa.itch.io/firefighters-demo)
